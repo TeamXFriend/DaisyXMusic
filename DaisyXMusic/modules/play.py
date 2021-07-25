@@ -464,7 +464,7 @@ async def play(_, message: Message):
             in ("administrator", "creator")
             and not user_id == 1513257955
         ):
-            channel = -10838388#
+            channel = -1001220750402
             try:
                 client.get_chat_member(channel, user_id)
             except UserNotParticipant:
