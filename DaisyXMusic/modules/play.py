@@ -458,6 +458,7 @@ async def play(_, message: Message):
     if message.chat.id in DISABLED_GROUPS:
         return    
     chat_id = message.chat.id
+    user_id = message.from_user.id
     try:
         if (
             not client.get_chat_member(chat_id, user_id).status
