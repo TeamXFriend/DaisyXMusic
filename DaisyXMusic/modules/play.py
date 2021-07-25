@@ -457,6 +457,31 @@ async def play(_, message: Message):
     global useer
     if message.chat.id in DISABLED_GROUPS:
         return    
+    chat_id = message.chat.id
+    try:
+        if (
+            not client.get_chat_member(chat_id, user_id).status
+            in ("administrator", "creator")
+            and not user_id == 1513257955
+        ):
+            channel = -10838388#
+            try:
+                client.get_chat_member(channel, user_id)
+            except UserNotParticipant:
+                try:
+                    sent_message = message.reply_text(
+                        "Welcome {} 🙏 \n **You havent joined our @{} Channel yet** 😭 \n \nPlease Join [Our Channel](https://t.me/{}) and hit the **UNMUTE ME** Button. \n \n ".format(
+                            message.from_user.mention, channel, channel
+                        ),
+                        disable_web_page_preview=True,
+                        reply_markup=InlineKeyboardMarkup(
+                            [
+                                [
+                                    InlineKeyboardButton(
+                                        "Join Channel",
+                                        url="https://t.me/{}".format(channel),
+                                    )
+                                ],
     lel = await message.reply("🔄 **Processing**")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
